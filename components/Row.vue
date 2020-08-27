@@ -4,7 +4,7 @@
 			<div class="flex flex-col justify-center lg:w-7/12 md:px-4 w-full mb-8 md:mb-0">
 				<slot>This is the default content if nothing gets specified to go here</slot>
 			</div>
-			<div class="w-full lg:w-5/12">
+			<div class="flex w-full lg:w-5/12">
 				<img
 					:src="list_images[image]"
 					class="m-auto w-full" />

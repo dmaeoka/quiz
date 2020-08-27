@@ -1,31 +1,48 @@
 <template>
 	<div>
-		<h1 class="font-display text-gray text-4xl leading-none mb-6">7. How many times each day do you stop to relax and breathe?</h1>
-
+		<h1 class="font-display text-gray text-4xl leading-none mb-6">{{ item.title }}</h1>
 		<div class="flex flex-wrap -mx-4">
 			<div class="w-4/12 px-4">
-				<Radio>
+				<button
+					class="flex flex-col w-full py-6 border-2 rounded-md justify-center items-center"
+					:class="{ 'activeBtn': item.answer[0] == true, 'inactiveBtn': item.answer[0] == false }"
+					@click.prevent="toggleActive(0)"
+				>
 					<span class="text-2xl font-bold">0</span>
 					<span class="text-base font-bold">TIME</span>
-				</Radio>
+				</button>
 			</div>
 			<div class="w-4/12 px-4">
-				<Radio>
+				<button
+					class="flex flex-col w-full py-6 border-2 rounded-md justify-center items-center"
+					:class="{ 'activeBtn': item.answer[1] == true, 'inactiveBtn': item.answer[1] == false }"
+					@click.prevent="toggleActive(1)"
+				>
 					<span class="text-2xl font-bold">1+</span>
 					<span class="text-base font-bold">TIMES</span>
-				</Radio>
+				</button>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import Radio from "~/components/Radio";
+import api from "../../config";
 
 export default {
 	name: 'step-7',
-	components: {
-		Radio,
+	props: {
+		item: {
+			type: Object
+		}
+	},
+	methods: {
+		toggleActive(i) {
+			const t = this;
+			t.item.answer = t.item.answer.map(num => false);
+			t.item.answer[i] = true;
+			api.save_answer(t.item)
+		}
 	},
 }
 </script>

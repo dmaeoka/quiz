@@ -15,11 +15,8 @@ class LocalStorageAPI {
 
 	query_questions() {
 		return new Promise((resolve, reject) => {
-
 			// localStorage.removeItem("movies") // to remove all
-
 			var value = localStorage.getItem(KEY);
-
 			if (!value) {
 				// load initial data
 				let url = "/data/questions.json";
@@ -82,12 +79,9 @@ class LocalStorageAPI {
 	delete_question(id) {
 		return new Promise((resolve, reject) => {
 			id = parseInt(id);
-
 			var value = localStorage.getItem(KEY);
 			let question_array = JSON.parse(value);
-
 			question_array = question_array.filter(item => item.id !== id)
-
 			localStorage.setItem(KEY, JSON.stringify(question_array));
 			resolve();
 		})

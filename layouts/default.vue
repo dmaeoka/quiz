@@ -22,9 +22,11 @@
 					<cross colour="text-black" />
 				</button>
 				<input
-					type="text"
+					type="email"
 					class="py-2 text-gray border-0 border-b-2 border-gray w-full text-base bg-transparent"
-					placeholder="Your email address ..." />
+					required
+					name="email"
+					placeholder="Your email address..." />
 				<button class="hidden" type="submit">Submit</button>
 			</form>
 		</div>

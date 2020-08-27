@@ -13,6 +13,7 @@
 				<nuxt-link
 					class="btn md:inline-block block w-full lg:w-auto text-center transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border-2 border-gray hover:bg-gray text-gray hover:text-white font-normal py-2 px-4 rounded-full "
 					to="/thank-you"
+					@click.native="clearAnswers"
 					type="button"
 				>
 					I’D LIKE TO OPT OUT
@@ -40,11 +41,20 @@ export default {
 	},
 	head() {
 		return {
-			title: "Initial Title"
+			title: "Welcome! Thank you for joining us."
 		}
 	},
 	mounted() {
 		this.$store.dispatch('set_page', false);
+	},
+	methods: {
+		clearAnswers(e) {
+			e.preventDefault();
+			this.$store.state.question_list.foreach(item => {
+				item.answer = item.answer.map(num => false);
+				api.save_answer(item);
+			});
+		}
 	}
 };
 </script>

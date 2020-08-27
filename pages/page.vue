@@ -1,12 +1,12 @@
 <template>
 	<Row :image="page_id">
-		<step-1 v-if="page_id == 1" />
-		<step-2 v-else-if="page_id == 2" />
-		<step-3 v-else-if="page_id == 3" />
-		<step-4 v-else-if="page_id == 4" />
-		<step-5 v-else-if="page_id == 5" />
-		<step-6 v-else-if="page_id == 6" />
-		<step-7 v-else-if="page_id == 7" />
+		<step-1 v-if="page_id == 1"      :item="question" />
+		<step-2 v-else-if="page_id == 2" :item="question" />
+		<step-3 v-else-if="page_id == 3" :item="question" />
+		<step-4 v-else-if="page_id == 4" :item="question" />
+		<step-5 v-else-if="page_id == 5" :item="question" />
+		<step-6 v-else-if="page_id == 6" :item="question" />
+		<step-7 v-else-if="page_id == 7" :item="question" />
 
 		<template v-slot:buttons>
 			<div class="flex w-full lg:w-6/12 lg:order-none order-2">
@@ -55,27 +55,21 @@ export default {
 		$route(to, from ) {
 			const id = parseInt(to.query.id);
 			this.page_id = id;
-			console.log("test");
-			this.$store.dispatch('set_page', `${id}/7`)
+			this.$store.dispatch('set_page', `${id}/7`);
+			this.get_question(id);
 		}
 	},
 	mounted() {
-		const t = this;
-		const id = t.page_id;
-		if (t.page_id) {
-			api.get_question(t.page_id)
-				.then(data => {
-					console.log(data);
-					t.question = data;
-					t.$store.dispatch('set_page', `${id}/7`)
-				})
-				.catch(() => {});
+		const id = this.page_id;
+		if (id) {
+			this.get_question(id);
 		}
 	},
 	data() {
 		return {
 			question: {
-				title: "Question: ",
+				title: "",
+				answer: ""
 			}
 		};
 	},
@@ -105,8 +99,15 @@ export default {
 			const count = this.$store.getters.count;
 			return (t.page_id < count) ? `/page?id=${t.page_id + 1}` : "/thank-you"
 		},
-
+		get_question(id) {
+			const t = this;
+			api.get_question(id)
+				.then(data => {
+					t.question = data;
+					t.$store.dispatch('set_page', `${id}/7`)
+				})
+				.catch(() => {});
+		}
 	}
-
 };
 </script>

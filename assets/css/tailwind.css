@@ -6,3 +6,42 @@ body {
 	background-color: #F9F9F9;
 }
 
+.activeBtn {
+	@apply bg-green-light;
+	@apply border-green;
+	@apply text-green;
+}
+
+.inactiveBtn {
+	@apply border-gray-light;
+	@apply text-gray;
+}
+
+.activeRadio {
+	@apply bg-green;
+	@apply border-green;
+	@apply text-white;
+
+	&:hover {
+		@apply bg-green;
+		@apply text-white;
+	}
+}
+
+.inactiveRadio {
+	@apply bg-white;
+	@apply text-gray;
+	@apply text-xl;
+	@apply border-2;
+	@apply border-gray;
+
+	&:hover {
+		@apply bg-gray;
+		@apply text-white;
+	}
+}
+
+.help-list:before {
+	content: "▸ ";
+	@apply text-green;
+}

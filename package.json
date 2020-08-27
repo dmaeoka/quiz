@@ -1,7 +1,7 @@
 {
-	"name": "resume",
-	"version": "1.0.0",
-	"description": "I'm an Independent Web Designer",
+	"name": "quiz",
+	"version": "0.0.1",
+	"description": "Quizz test for Infomentum",
 	"author": "Diego Maeoka - Senior UI Consultant",
 	"private": true,
 	"scripts": {
