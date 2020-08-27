@@ -1,0 +1,11 @@
+{
+  "name": "resume",
+  "short_name": "Short name replace",
+  "description": "Description Replace",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f4fce",
+  "lang": "en"
+}
