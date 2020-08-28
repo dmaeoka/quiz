@@ -13,7 +13,11 @@
 		<div class="flex flex-wrap md:mt-16 mt-8" v-if="!!$slots.buttons">
 			<slot name="buttons"></slot>
 		</div>
-		<div class="absolute left-0 bottom-0 w-full bg-red-500 h-1 rounded-b-md "></div>
+		<div
+			v-show="porcentage > 0"
+			class="absolute left-0 bottom-0 w-full bg-gray-light h-1 rounded-b-md overflow-hidden">
+			<div class="h-full bg-cyan" :style="{ width: (porcentage * 100 ) + '%' }"></div>
+		</div>
 	</div>
 </template>
 
@@ -22,6 +26,10 @@ export default {
 	name: 'row',
 	props: {
 		image: {
+			type: Number,
+			default: 0
+		},
+		porcentage: {
 			type: Number,
 			default: 0
 		}

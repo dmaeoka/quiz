@@ -1,5 +1,5 @@
 <template>
-	<Row :image="page_id">
+	<Row :image="page_id" :porcentage="(page_id/7)">
 		<step-1 v-if="page_id == 1"      :item="question" />
 		<step-2 v-else-if="page_id == 2" :item="question" />
 		<step-3 v-else-if="page_id == 3" :item="question" />
@@ -96,7 +96,7 @@ export default {
 		},
 		detailslink() {
 			const t = this;
-			const count = this.$store.getters.count;
+			const count = t.$store.getters.count;
 			return (t.page_id < count) ? `/page?id=${t.page_id + 1}` : "/thank-you"
 		},
 		get_question(id) {

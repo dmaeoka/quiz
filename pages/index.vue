@@ -49,11 +49,15 @@ export default {
 	},
 	methods: {
 		clearAnswers(e) {
-			e.preventDefault();
-			this.$store.state.question_list.foreach(item => {
-				item.answer = item.answer.map(num => false);
-				api.save_answer(item);
-			});
+			try {
+				e.preventDefault();
+				this.$store.state.question_list.foreach(item => {
+					item.answer = item.answer.map(num => false);
+					api.save_answer(item);
+				});
+			} catch (error) {
+
+			}
 		}
 	}
 };

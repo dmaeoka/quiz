@@ -6,7 +6,9 @@
 			</span>
 		</div>
 		<div class="container relative z-10 bg-white rounded-md md:px-10 px-5 pb-10 pt-10">
-			<img src="../assets/img/logo.svg" alt="Logo infomentum" class="m-auto mb-5 logo md:w-full w-48" />
+			<nuxt-link to="/">
+				<img src="../assets/img/logo.svg" alt="Logo infomentum" class="m-auto mb-5 logo md:w-full w-48" />
+			</nuxt-link>
 			<nuxt />
 		</div>
 		<div
